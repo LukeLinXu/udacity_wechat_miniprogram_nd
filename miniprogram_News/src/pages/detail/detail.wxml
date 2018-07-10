@@ -1,2 +1,17 @@
 
-<text>{{resultInfo.title}}</text>
+<view>{{resultInfo.title}}</view>
+
+<view>{{resultInfo.source}}</view>
+
+<view>{{resultInfo.date}}</view>
+
+<view>{{resultInfo.readCount}}</view>
+
+<view class='news-content-list'>
+    <view class="news-content-item" wx:for="{{resultInfo.content}}">
+      <text wx:if="{{item.type==='strong'}}" class='news-content_item_strong'>{{item.text}}</text>
+      <text wx:elif="{{item.type==='p'}}" class='news-content_item_p'>{{item.text}}</text>
+      <image wx:elif="{{item.type==='image'}}" class='news-content_item_image' src='{{item.src}}'></image>
+      <view wx:else>{{"***need handle type:"+item.type}}</view>
+    </view>
+  </view>
