@@ -50,7 +50,7 @@ Page({
   },
 
   onTapNew: function (event) {
-    let id = event.target.dataset.id
+    let id = event.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/detail/detail?news_id=' + id,
     })
