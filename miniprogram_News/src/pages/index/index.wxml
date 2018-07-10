@@ -9,7 +9,9 @@
 <scroll-view scroll-x>
   <view class='news-list'>
     <view class="news-item" wx:for="{{newsList}}" data-id="{{item.id}}" bindtap='onTapNew'>
-      {{item.title}}
+      <view class='news_item_title'>{{item.title}}</view>
+      <view class='news_item_time_and_author'>{{item.date + item.source}}</view>
+      <image class='news_item_image' src='{{item.firstImage}}'></image>
     </view>
   </view>
 </scroll-view>
