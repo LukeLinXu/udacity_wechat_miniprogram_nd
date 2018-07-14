@@ -11,7 +11,7 @@
     <view class="news-item" wx:for="{{newsList}}" data-id="{{item.id}}" bindtap='onTapNew'>
       <view class="news-item-text">
         <view class='news-item-title'>{{item.title}}</view>
-        <view class='news-item-time-and-author'>{{item.date + item.source}}</view>
+        <view class='news-item-time-and-author'>{{item.date + "  " + item.source}}</view>
       </view>
       <image class='news-item-image' src='{{item.firstImage}}'></image>
     </view>

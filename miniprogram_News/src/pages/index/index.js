@@ -1,4 +1,4 @@
-
+const util = require('../../utils/util.js')
 
 Page({
   data: {
@@ -31,8 +31,13 @@ Page({
       },
       success: res => {
         console.log(res.data)
+        var temp = res.data.result
+        for(var i = 0; i<temp.length; i++){
+          var item = temp[i]
+          item.date = util.formatTime(new Date(item.date))
+        }
         this.setData({
-            newsList: res.data.result
+            newsList: temp
         })
       },
       complete: () => {
@@ -54,5 +59,6 @@ Page({
     wx.navigateTo({
       url: '/pages/detail/detail?news_id=' + id,
     })
-  }
+  },
+
 })
