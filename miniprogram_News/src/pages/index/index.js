@@ -61,4 +61,17 @@ Page({
     })
   },
 
+  onImageLoadFail: function (event) {
+    console.log(event)
+    var index = event.currentTarget.dataset.index
+    console.log(index)
+    var temp = this.data.newsList
+    console.log(temp)
+    temp[index].firstImage = "/images/image_load_fail.png"
+    
+    this.setData({
+      newsList: temp
+    })
+  },
+
 })

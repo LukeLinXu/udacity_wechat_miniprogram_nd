@@ -14,7 +14,7 @@
         <view class='news-item-title'>{{item.title}}</view>
         <view class='news-item-time-and-author'>{{item.date + "  " + item.source}}</view>
       </view>
-      <image class='news-item-image' src='{{item.firstImage}}'></image>
+       <image class='news-item-image' src='{{item.firstImage}}' data-index='{{index}}' binderror='onImageLoadFail'></image> 
     </view>
   </view>
 </scroll-view>
