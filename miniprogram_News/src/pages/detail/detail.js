@@ -1,4 +1,4 @@
-// pages/detail/detail.js
+const util = require('../../utils/util.js')
 Page({
 
   /**
@@ -33,8 +33,10 @@ Page({
       },
       success: res => {
         console.log(res.data)
+        var temp = res.data.result
+        temp.date = util.formatTime(new Date(temp.date))
         this.setData({
-          resultInfo: res.data.result
+          resultInfo: temp
         })
       },
       complete: () => {

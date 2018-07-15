@@ -1,9 +1,9 @@
 <view class='full-page-holder'>
   <view class='news-title'>{{resultInfo.title}}</view>
   <view class='news-text'>
-    <view class='news-source'>{{resultInfo.source}}</view>
     <view class='news-date'>{{resultInfo.date}}</view>
-    <view class='news-read-count'>{{resultInfo.readCount}}</view>
+    <view class='news-source'>{{resultInfo.source}}</view>
+    <view class='news-read-count'>{{'阅读：'+resultInfo.readCount}}</view>
   </view>
   <view wx:for="{{resultInfo.content}}">
     <strong wx:if="{{item.type==='strong'}}" class='news-content_item_strong'>{{item.text}}</strong>

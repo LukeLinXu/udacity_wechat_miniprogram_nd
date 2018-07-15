@@ -17,12 +17,14 @@
   font-size: 25rpx;
   line-height: 35rpx;
   opacity: 0.5;
+  flex-grow: 1
 }
 
 .news-date {
   font-size: 25rpx;
   line-height: 35rpx;
   opacity: 0.5;
+  margin-right: 20rpx
 }
 
 .news-read-count {
