@@ -1,7 +1,8 @@
 <scroll-view scroll-x>
   <view class='type-list'>
     <view class="type-item" wx:for="{{typeMap}}" wx:for-index="key" wx:for-item="value" data-id="{{key}}" bindtap='onTapType'>
-      {{value}}
+      <view wx:if="{{type == key}}" class="type-item-selected">{{value}}</view>
+      <view wx:else class="type-item-unselected">{{value}}</view>
     </view>
   </view>
 </scroll-view>

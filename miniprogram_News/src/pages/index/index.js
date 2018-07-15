@@ -47,7 +47,7 @@ Page({
   },
 
   onTapType:function(event){
-    let id = event.target.dataset.id
+    let id = event.currentTarget.dataset.id
     this.setData({
       type: id
     })

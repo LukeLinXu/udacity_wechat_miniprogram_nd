@@ -12,6 +12,14 @@
     align-items:center;
 }
 
+.type-item-selected{
+  font-size: 45rpx;
+}
+
+.type-item-unselected{
+  font-size: 35rpx;
+}
+
 .news-list {
     margin-top: 20rpx;
     margin-bottom: 20rpx;
