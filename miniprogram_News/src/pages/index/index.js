@@ -35,6 +35,12 @@ Page({
         for(var i = 0; i<temp.length; i++){
           var item = temp[i]
           item.date = util.formatTime(new Date(item.date))
+          if(item.firstImage == null){
+            item.firstImage = '/images/image_load_fail.png'
+          }
+          if (item.source == null) {
+            item.source = ''
+          }
         }
         this.setData({
             newsList: temp
