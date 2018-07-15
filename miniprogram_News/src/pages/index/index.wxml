@@ -1,0 +1,20 @@
+<scroll-view scroll-x>
+  <view class='type-list'>
+    <view class="type-item" wx:for="{{typeMap}}" wx:for-index="key" wx:for-item="value" data-id="{{key}}" bindtap='onTapType'>
+      <view wx:if="{{type == key}}" class="type-item-selected">{{value}}</view>
+      <view wx:else class="type-item-unselected">{{value}}</view>
+    </view>
+  </view>
+</scroll-view>
+
+<scroll-view scroll-x>
+  <view class='news-list'>
+    <view class="news-item" wx:for="{{newsList}}" data-id="{{item.id}}" bindtap='onTapNew'>
+      <view class="news-item-text">
+        <view class='news-item-title'>{{item.title}}</view>
+        <view class='news-item-time-and-author'>{{item.date + "  " + item.source}}</view>
+      </view>
+       <image class='news-item-image' src='{{item.firstImage}}' data-index='{{index}}' binderror='onImageLoadFail'></image> 
+    </view>
+  </view>
+</scroll-view>

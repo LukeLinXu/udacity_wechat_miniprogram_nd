@@ -1,0 +1,14 @@
+<view class='full-page-holder'>
+  <view class='news-title'>{{resultInfo.title}}</view>
+  <view class='news-text'>
+    <view class='news-date'>{{resultInfo.date}}</view>
+    <view class='news-source'>{{resultInfo.source}}</view>
+    <view class='news-read-count'>{{'阅读：'+resultInfo.readCount}}</view>
+  </view>
+  <view wx:for="{{resultInfo.content}}">
+    <strong wx:if="{{item.type==='strong'}}" class='news-content_item_strong'>{{item.text}}</strong>
+    <text wx:elif="{{item.type==='p'}}" class='news-content_item_p'>{{item.text}}</text>
+    <image wx:elif="{{item.type==='image'}}" class='news-content_item_image' src='{{item.src}}' mode='aspectFit'></image>
+    <view wx:else>{{"***need handle type:"+item.type}}</view>
+  </view>
+</view>
