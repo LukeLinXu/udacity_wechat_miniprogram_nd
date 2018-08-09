@@ -36,5 +36,9 @@ router.get('/movie', controllers.movie.list)
 router.get('/movie/:id', controllers.movie.detail)
 
 router.get('/comment/:id', controllers.comment.detail)
+router.get('/comments/user/:id', controllers.comment.listByUserId)
+
+
+router.get('/user/:id', controllers.users.detail)
 
 module.exports = router

@@ -10,5 +10,17 @@ module.exports = {
       comment = {}
     }
     ctx.state.data = comment
+  },
+
+  listByUserId: async ctx => {
+    let commentId = ctx.params.id
+    let comment
+
+    if (commentId) {
+      comment = (await DB.query('select * from comments where comments.user_id = ?', [commentId]))
+    } else {
+      comment = {}
+    }
+    ctx.state.data = comment
   }
 } 
