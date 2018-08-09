@@ -37,6 +37,7 @@ router.get('/movie/:id', controllers.movie.detail)
 
 router.get('/comment/:id', controllers.comment.detail)
 router.get('/comments/user/:id', controllers.comment.listByUserId)
+router.get('/comments/movie/:id', controllers.comment.listByMovieId)
 
 
 router.get('/user/:id', controllers.users.detail)

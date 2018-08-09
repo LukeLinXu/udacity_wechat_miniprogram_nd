@@ -22,5 +22,17 @@ module.exports = {
       comment = {}
     }
     ctx.state.data = comment
+  },
+
+  listByMovieId: async ctx => {
+    let commentId = + ctx.params.id
+    let comment
+
+    if (!isNaN(commentId)) {
+      comment = (await DB.query('select * from comments where comments.movie_id = ?', [commentId]))
+    } else {
+      comment = {}
+    }
+    ctx.state.data = comment
   }
 } 
