@@ -1,5 +1,12 @@
 const DB = require('../utils/db.js')
 module.exports = {
+
+  random: async ctx => {
+    let comment
+    comment = (await DB.query('SELECT * FROM comments ORDER BY RAND() LIMIT 1'))[0]
+    ctx.state.data = comment
+  },
+
   detail: async ctx => {
     let commentId = + ctx.params.id
     let comment
