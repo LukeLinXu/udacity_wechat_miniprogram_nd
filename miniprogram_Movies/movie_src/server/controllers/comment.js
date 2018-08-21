@@ -4,6 +4,8 @@ module.exports = {
   random: async ctx => {
     let comment
     comment = (await DB.query('SELECT * FROM comments ORDER BY RAND() LIMIT 1'))[0]
+    comment.movie = (await DB.query('select * from movies where movies.id = ?', [comment.movie_id]))[0]
+    comment.user = (await DB.query('select * from users where users.id = ?', [comment.user_id]))[0]
     ctx.state.data = comment
   },
 
