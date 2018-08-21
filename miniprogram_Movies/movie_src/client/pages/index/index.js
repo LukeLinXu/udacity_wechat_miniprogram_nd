@@ -1,18 +1,48 @@
 // pages/index/index.js
+const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
+const config = require('../../config.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    comment: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getRandomComment()
+  },
+
+  getRandomComment() {
+    wx.showLoading({
+            title: '评论数据加载中',
+    })
+    qcloud.request({
+        url: config.service.getRandomComment,
+        success: result => {
+            wx.hideLoading()
+            if (!result.data.code) {
+                this.setData({
+                    comment: result.data.data
+                })
+            } else {
+                wx.showToast({
+                    title: '商品数据加载失败',
+                })
+            }
+        },
+        fail: result => {
+            wx.hideLoading()
+            wx.showToast({
+                title: '评论数据加载失败',
+            })
+        }
+    })
   },
 
   /**
