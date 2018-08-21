@@ -1,3 +1,5 @@
 <!--pages/index/index.wxml-->
 <image class='movie-image' src='{{comment.movie.image}}'></image>
 <view>{{comment.movie.title}}</view>
+<image class='profile' src='{{comment.user.avatar}}'></image>
+<view>{{comment.user.name}}给你推荐了一部电影</view>
