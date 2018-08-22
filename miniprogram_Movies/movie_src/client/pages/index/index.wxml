@@ -3,3 +3,5 @@
 <view>{{comment.movie.title}}</view>
 <image class='profile' src='{{comment.user.avatar}}'></image>
 <view>{{comment.user.name}}给你推荐了一部电影</view>
+<view bindtap='onTapMovieList'>热门</view>
+<view>我的</view>

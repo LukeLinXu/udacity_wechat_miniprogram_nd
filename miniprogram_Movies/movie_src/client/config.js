@@ -23,7 +23,8 @@ var config = {
         // 上传图片接口
         uploadUrl: `${host}/weapp/upload`,
 
-        getRandomComment: `${host}/weapp/comments/random`
+        getRandomComment: `${host}/weapp/comments/random`,
+        getMoviesList: `${host}/weapp/movie`
     }
 };
 

@@ -1,2 +1,11 @@
-<!--pages/movieList/movieList.wxml-->
-<text>pages/movieList/movieList.wxml</text>
+<scroll-view scroll-x>
+  <view class='movies-list'>
+    <view class="movies-item" wx:for="{{moviesList}}" data-id="{{item.id}}" bindtap='onTapMovie'>
+      <image class='movies-item-image' src='{{item.image}}' data-index='{{index}}' binderror='onImageLoadFail'></image> 
+      <view class="movies-item-text">
+        <view class='movies-item-title'>{{item.title}}</view>
+        <view class='movies-item-category'>{{item.category}}</view>
+      </view> 
+    </view>
+  </view>
+</scroll-view>
