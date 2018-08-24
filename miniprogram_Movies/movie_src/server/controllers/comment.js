@@ -34,11 +34,11 @@ module.exports = {
   },
 
   listByMovieId: async ctx => {
-    let commentId = + ctx.params.id
+    let movieId = + ctx.params.id
     let comment
 
-    if (!isNaN(commentId)) {
-      comment = (await DB.query('select * from comments where comments.movie_id = ?', [commentId]))
+    if (!isNaN(movieId)) {
+      comment = (await DB.query('SELECT * FROM comments INNER JOIN users ON comments.movie_id = ? AND comments.user_id=users.id', [movieId]))
     } else {
       comment = {}
     }
