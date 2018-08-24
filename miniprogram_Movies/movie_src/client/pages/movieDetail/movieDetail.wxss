@@ -1,1 +1,7 @@
 /* pages/movieDetail/movieDetail.wxss */
+.movie-image {
+  display: block;
+  margin: 0 auto;
+  width: 540rpx;
+  height: 800rpx;
+}

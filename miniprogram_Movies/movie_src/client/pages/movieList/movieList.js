@@ -45,7 +45,7 @@ Page({
     })
   },
 
-  onTapNew: function (event) {
+  onTapMovie: function (event) {
     let id = event.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/movieDetail/movieDetail?movie_id=' + id,

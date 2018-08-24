@@ -1,2 +1,8 @@
 <!--pages/movieDetail/movieDetail.wxml-->
-<text>pages/movieDetail/movieDetail.wxml</text>
+<image class='movie-image' src='{{movie.image}}'></image>
+<view>{{movie.title}}</view>
+<view>{{movie.description}}</view>
+
+
+<view data-id='{{movie.id}}' bindtap='onTapMovieComments'>查看影评</view>
+<view>添加影评</view>
