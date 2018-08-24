@@ -22,11 +22,11 @@ module.exports = {
   },
 
   listByUserId: async ctx => {
-    let commentId = ctx.params.id
+    let userId = ctx.params.id
     let comment
 
-    if (commentId) {
-      comment = (await DB.query('select * from comments where comments.user_id = ?', [commentId]))
+    if (userId) {
+      comment = (await DB.query('SELECT * FROM comments INNER JOIN movies ON comments.user_id = ? AND comments.movie_id=movies.id', [userId]))
     } else {
       comment = {}
     }
