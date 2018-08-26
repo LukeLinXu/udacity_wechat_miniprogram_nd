@@ -28,7 +28,7 @@ module.exports = {
     let comment
 
     if (userId) {
-      comment = (await DB.query('SELECT * FROM comments INNER JOIN movies ON comments.user_id = ? AND comments.movie_id=movies.id', [userId]))
+      comment = (await DB.query('SELECT * FROM movies INNER JOIN comments ON comments.user_id = ? AND comments.movie_id=movies.id', [userId]))
     } else {
       comment = {}
     }
@@ -40,7 +40,7 @@ module.exports = {
     let comment
 
     if (!isNaN(movieId)) {
-      comment = (await DB.query('SELECT * FROM comments INNER JOIN users ON comments.movie_id = ? AND comments.user_id=users.id', [movieId]))
+      comment = (await DB.query('SELECT * FROM users INNER JOIN comments ON comments.movie_id = ? AND comments.user_id=users.id', [movieId]))
     } else {
       comment = {}
     }
