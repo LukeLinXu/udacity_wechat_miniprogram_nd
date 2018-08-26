@@ -15,6 +15,8 @@ module.exports = {
 
     if (!isNaN(commentId)) {
       comment = (await DB.query('select * from comments where comments.id = ?', [commentId]))[0]
+      comment.movie = (await DB.query('select * from movies where movies.id = ?', [comment.movie_id]))[0]
+      comment.user = (await DB.query('select * from users where users.id = ?', [comment.user_id]))[0]
     } else {
       comment = {}
     }
