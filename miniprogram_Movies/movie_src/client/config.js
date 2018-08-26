@@ -24,6 +24,7 @@ var config = {
         uploadUrl: `${host}/weapp/upload`,
 
         getRandomComment: `${host}/weapp/comments/random`,
+        getReviewListByMovieId: `${host}/weapp/comments/movie/`,
         getMoviesList: `${host}/weapp/movie`,
         getMovieDetail: `${host}/weapp/movie/`,
     }

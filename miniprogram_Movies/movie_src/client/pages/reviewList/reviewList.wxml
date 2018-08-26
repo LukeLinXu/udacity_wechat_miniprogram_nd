@@ -1,2 +1,12 @@
 <!--pages/reviewList/reviewList.wxml-->
-<text>pages/reviewList/reviewList.wxml</text>
+<scroll-view scroll-x>
+  <view class='reviews-list'>
+    <view wx:for="{{reviewsList}}" data-id="{{item.id}}" bindtap='onTapReview'>
+      <view class="reviews-item">
+        <image class='reviews-item-image' src='{{item.avatar}}' data-index='{{index}}' binderror='onImageLoadFail'></image>
+        <view class='reviews-item-title'>{{item.name}}</view>
+      </view>
+      <view class='reviews-item-category'>{{item.content}}</view>
+    </view>
+  </view>
+</scroll-view>
