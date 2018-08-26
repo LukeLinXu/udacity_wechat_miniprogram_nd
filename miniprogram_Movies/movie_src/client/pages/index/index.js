@@ -58,6 +58,13 @@ Page({
     })
   },
 
+  onTapMovie: function (event) {
+    let id = event.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/movieDetail/movieDetail?movie_id=' + id,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
