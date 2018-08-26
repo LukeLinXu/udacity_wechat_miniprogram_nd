@@ -1,2 +1,8 @@
 <!--pages/reviewDetail/reviewDetail.wxml-->
-<text>pages/reviewDetail/reviewDetail.wxml</text>
+<image class='movie-image' src='{{comment.movie.image}}'></image>
+<view>{{comment.movie.title}}</view>
+<image class='profile' src='{{comment.user.avatar}}' data-id="{{comment.id}}" bindtap='onTapAvatar'></image>
+<view>{{comment.user.name}}的影评</view>
+<view>{{comment.content}}</view>
+<view>收藏影评</view>
+<view>写影评</view>

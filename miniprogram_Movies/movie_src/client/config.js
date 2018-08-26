@@ -25,6 +25,7 @@ var config = {
 
         getRandomComment: `${host}/weapp/comments/random`,
         getReviewListByMovieId: `${host}/weapp/comments/movie/`,
+        getReviewDetail: `${host}/weapp/comment/`,
         getMoviesList: `${host}/weapp/movie`,
         getMovieDetail: `${host}/weapp/movie/`,
     }
