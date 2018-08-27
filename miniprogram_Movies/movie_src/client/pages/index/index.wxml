@@ -4,4 +4,4 @@
 <image class='profile' src='{{comment.user.avatar}}' data-id="{{comment.id}}" bindtap='onTapAvatar'></image>
 <view>{{comment.user.name}}给你推荐了一部电影</view>
 <view bindtap='onTapMovieList'>热门</view>
-<view>我的</view>
+<view bindtap='onTapLogin'>我的</view>
