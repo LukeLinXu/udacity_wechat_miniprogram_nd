@@ -10,6 +10,7 @@ Page({
   data: {
       type: 0,
       movie: null,
+    inputValue: null
   },
 
   /**
@@ -20,6 +21,21 @@ Page({
         movie: JSON.parse(options.movie),
         type: options.type_id
       })
+  },
+
+  bindKeyInput: function (e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+
+  onSubmitClick: function() {
+    let commentObj = this.data.inputValue
+    let movieObj = JSON.stringify(this.data.movie)
+    let type = this.data.type
+    wx.navigateTo({
+      url: '/pages/reviewPreview/reviewPreview?type=type'+'&comment='+commentObj+'&movie='+movieObj
+    })
   },
 
   /**
