@@ -50,14 +50,19 @@ Page({
   },
 
   openCommentOptions(e){
+      let id = this.data.comment.movie.id
     wx.showActionSheet({
       itemList: ['文字', '音频'],
       itemColor: '#007aff',
       success(res) {
         if (res.tapIndex === 0) {
-          wx.showToast({ title: '文字成功！' });
+            wx.navigateTo({
+                url: '/pages/reviewEdit/reviewEdit?type_id=0&movie_id=' + id
+            })
         } else if (res.tapIndex === 1) {
-          wx.showToast({ title: '音频成功！' });
+            wx.navigateTo({
+                url: '/pages/reviewEdit/reviewEdit?type_id=1&movie_id=' + id
+            })
         }
       }
     })
