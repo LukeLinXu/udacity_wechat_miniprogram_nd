@@ -50,18 +50,18 @@ Page({
   },
 
   openCommentOptions(e){
-      let id = this.data.comment.movie.id
+    let movie = JSON.stringify(this.data.comment.movie)
     wx.showActionSheet({
       itemList: ['文字', '音频'],
       itemColor: '#007aff',
       success(res) {
         if (res.tapIndex === 0) {
             wx.navigateTo({
-                url: '/pages/reviewEdit/reviewEdit?type_id=0&movie_id=' + id
+                url: '/pages/reviewEdit/reviewEdit?type_id=0&movie=' + movie
             })
         } else if (res.tapIndex === 1) {
             wx.navigateTo({
-                url: '/pages/reviewEdit/reviewEdit?type_id=1&movie_id=' + id
+                url: '/pages/reviewEdit/reviewEdit?type_id=1&movie=' + movie
             })
         }
       }

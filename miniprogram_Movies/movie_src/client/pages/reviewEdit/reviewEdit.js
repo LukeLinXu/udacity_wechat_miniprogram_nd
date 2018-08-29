@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-      id: '',
+      type: 0,
       movie: null,
   },
 
@@ -17,37 +17,11 @@ Page({
    */
   onLoad: function (options) {
       this.setData({
-          id: options.movie_id
+        movie: JSON.parse(options.movie),
+        type: options.type_id
       })
-      this.getMovieDetail()
   },
 
-    getMovieDetail() {
-        wx.showLoading({
-            title: '电影数据加载中',
-        })
-        qcloud.request({
-            url: config.service.getMovieDetail+this.data.id,
-            success: result => {
-                wx.hideLoading()
-                if (!result.data.code) {
-                    this.setData({
-                        movie: result.data.data
-                    })
-                } else {
-                    wx.showToast({
-                        title: '电影数据加载失败',
-                    })
-                }
-            },
-            fail: result => {
-                wx.hideLoading()
-                wx.showToast({
-                    title: '电影数据加载失败',
-                })
-            }
-        })
-    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
