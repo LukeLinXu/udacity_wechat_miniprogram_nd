@@ -5,4 +5,4 @@
 <view>{{comment.user.name}}的影评</view>
 <view>{{comment.content}}</view>
 <view>收藏影评</view>
-<view>写影评</view>
+<view bindtap='openCommentOptions'>写影评</view>
