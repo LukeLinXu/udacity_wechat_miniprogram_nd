@@ -1,2 +1,9 @@
 <!--pages/reviewEdit/reviewEdit.wxml-->
-<text>pages/reviewEdit/reviewEdit.wxml</text>
+<image class='movie-image' src='{{movie.image}}'></image>
+<view>{{movie.title}}</view>
+
+<view class="section">
+  <input  bindinput="bindKeyInput" placeholder="输入同步到view中"/>
+</view>
+
+<button bindtap='onSubmitClick'>完成</button>

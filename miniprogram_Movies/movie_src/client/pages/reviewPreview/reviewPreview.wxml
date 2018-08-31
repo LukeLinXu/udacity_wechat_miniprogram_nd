@@ -1,2 +1,8 @@
 <!--pages/reviewPreview/reviewPreview.wxml-->
-<text>pages/reviewPreview/reviewPreview.wxml</text>
+<image class='movie-image' src='{{movie.image}}'></image>
+<view>{{movie.title}}</view>
+<image class='profile' src='{{user.avatar}}'></image>
+<view>{{user.name}}的影评</view>
+<view>{{comment.content}}</view>
+<view>重新编辑</view>
+<view>发布影评</view>
