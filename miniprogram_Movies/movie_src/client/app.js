@@ -18,24 +18,30 @@ App({
     },
 
     login({ success, error }) {
-        wx.getSetting({
-            success: res => {
-                if (res.authSetting['scope.userInfo'] === false) {
+        if (userInfo){
+            console.log("login check success1")
+            return success && success({userInfo})
+        } else {
+            console.log("login check success2")
+            wx.getSetting({
+                success: res => {
+                    if (res.authSetting['scope.userInfo'] === false) {
 
-                    this.data.locationAuthType = UNAUTHORIZED
-                    // 已拒绝授权
-                    wx.showModal({
-                        title: '提示',
-                        content: '请授权我们获取您的用户信息',
-                        showCancel: false
-                    })
-                    error && error()
-                } else {
-                    this.data.locationAuthType = AUTHORIZED
-                    this.doQcloudLogin({ success, error })
+                        this.data.locationAuthType = UNAUTHORIZED
+                        // 已拒绝授权
+                        wx.showModal({
+                            title: '提示',
+                            content: '请授权我们获取您的用户信息',
+                            showCancel: false
+                        })
+                        error && error()
+                    } else {
+                        this.data.locationAuthType = AUTHORIZED
+                        this.doQcloudLogin({ success, error })
+                    }
                 }
-            }
-        })
+            })
+        }
     },
 
     doQcloudLogin({ success, error }) {
@@ -43,71 +49,29 @@ App({
         qcloud.login({
             success: result => {
                 if (result) {
-                    let userInfo = result
+                    console.log("doQcloudLogin check success1")
                     success && success({
                         userInfo
                     })
                 } else {
-                    // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
-                    this.getUserInfo({ success, error })
-                }
-            },
-            fail: () => {
-                error && error()
-            }
-        })
-    },
-
-    getUserInfo({ success, error }) {
-        if (userInfo) return userInfo
-
-        qcloud.request({
-            url: config.service.user,
-            login: true,
-            success: result => {
-                let data = result.data
-
-                if (!data.code) {
-                    let userInfo = data.data
-
+                    console.log("doQcloudLogin check success2")
                     success && success({
                         userInfo
                     })
-                } else {
-                    error && error()
                 }
             },
             fail: () => {
+                console.log("doQcloudLogin check fail"+ error)
                 error && error()
             }
         })
     },
 
-    checkSession({ success, error }) {
-        if (userInfo) {
-            return success && success({
-                userInfo
-            })
-        }
-
-        wx.checkSession({
-            success: () => {
-                this.getUserInfo({
-                    success: res => {
-                        userInfo = res.userInfo
-
-                        success && success({
-                            userInfo
-                        })
-                    },
-                    fail: () => {
-                        error && error()
-                    }
-                })
-            },
-            fail: () => {
-                error && error()
-            }
-        })
+    getUserInfo(){
+        return this.userInfo
     },
+
+    setUserInfo(userInfo){
+        this.userInfo = userInfo
+    }
 })
