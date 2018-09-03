@@ -56,6 +56,25 @@ Page({
     })
   },
 
+    openCommentOptions(e){
+        let movie = JSON.stringify(this.data.movie)
+        wx.showActionSheet({
+            itemList: ['文字', '音频'],
+            itemColor: '#007aff',
+            success(res) {
+                if (res.tapIndex === 0) {
+                    wx.navigateTo({
+                        url: '/pages/reviewEdit/reviewEdit?type_id=0&movie=' + movie + '&type_id=0'
+                    })
+                } else if (res.tapIndex === 1) {
+                    wx.navigateTo({
+                        url: '/pages/reviewEdit/reviewEdit?type_id=1&movie=' + movie + '&type_id=1'
+                    })
+                }
+            }
+        })
+    },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

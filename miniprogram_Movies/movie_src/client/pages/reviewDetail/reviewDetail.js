@@ -57,11 +57,11 @@ Page({
       success(res) {
         if (res.tapIndex === 0) {
             wx.navigateTo({
-                url: '/pages/reviewEdit/reviewEdit?type_id=0&movie=' + movie
+                url: '/pages/reviewEdit/reviewEdit?type_id=0&movie=' + movie + '&type_id=0'
             })
         } else if (res.tapIndex === 1) {
             wx.navigateTo({
-                url: '/pages/reviewEdit/reviewEdit?type_id=1&movie=' + movie
+                url: '/pages/reviewEdit/reviewEdit?type_id=1&movie=' + movie + '&type_id=1'
             })
         }
       }
