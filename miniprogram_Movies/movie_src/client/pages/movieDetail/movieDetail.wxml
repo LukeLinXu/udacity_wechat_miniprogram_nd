@@ -5,4 +5,4 @@
 
 
 <view data-id='{{movie.id}}' bindtap='onTapMovieComments'>查看影评</view>
-<view>添加影评</view>
+<view bindtap='openCommentOptions'>添加影评</view>

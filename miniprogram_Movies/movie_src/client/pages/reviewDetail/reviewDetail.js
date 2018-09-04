@@ -1,6 +1,7 @@
 // pages/reviewDetail/reviewDetail.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 const config = require('../../config.js')
+const app = getApp()
 
 Page({
 
@@ -19,7 +20,6 @@ Page({
       this.setData({
           id: options.comment_id
       })
-      this.getReviewDetail()
   },
 
     getReviewDetail() {
@@ -57,11 +57,11 @@ Page({
       success(res) {
         if (res.tapIndex === 0) {
             wx.navigateTo({
-                url: '/pages/reviewEdit/reviewEdit?type_id=0&movie=' + movie
+                url: '/pages/reviewEdit/reviewEdit?type_id=0&movie=' + movie + '&type_id=0'
             })
         } else if (res.tapIndex === 1) {
             wx.navigateTo({
-                url: '/pages/reviewEdit/reviewEdit?type_id=1&movie=' + movie
+                url: '/pages/reviewEdit/reviewEdit?type_id=1&movie=' + movie + '&type_id=1'
             })
         }
       }
@@ -79,7 +79,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(app.getUserInfo()){
+        this.getReviewDetail()
+    }else {
+        wx.navigateTo({
+            url: '/pages/login/login'
+        })
+    }
   },
 
   /**

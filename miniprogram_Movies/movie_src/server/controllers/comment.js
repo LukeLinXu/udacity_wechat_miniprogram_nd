@@ -24,7 +24,7 @@ module.exports = {
   },
 
   listByUserId: async ctx => {
-    let userId = ctx.params.id
+    let userId = ctx.state.$wxInfo.userinfo.openId
     let comment
 
     if (userId) {

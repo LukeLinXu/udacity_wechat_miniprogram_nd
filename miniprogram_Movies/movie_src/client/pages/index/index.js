@@ -1,7 +1,6 @@
 // pages/index/index.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 const config = require('../../config.js')
-const app = getApp()
 
 Page({
 
@@ -18,22 +17,6 @@ Page({
   onLoad: function (options) {
     this.getRandomComment()
   },
-
-    onTapLogin: function () {
-        app.login({
-            success: ({ userInfo }) => {
-                this.setData({
-                    userInfo,
-                    locationAuthType: app.data.locationAuthType
-                })
-            },
-            error: () => {
-                this.setData({
-                    locationAuthType: app.data.locationAuthType
-                })
-            }
-        })
-    },
 
   getRandomComment() {
     wx.showLoading({
@@ -67,6 +50,12 @@ Page({
       url: '/pages/movieList/movieList',
     })
   },
+
+    onTapLogin: function(){
+        wx.navigateTo({
+            url: '/pages/myReviews/myReviews',
+        })
+    },
 
   onTapAvatar: function (event){
     let id = event.currentTarget.dataset.id
