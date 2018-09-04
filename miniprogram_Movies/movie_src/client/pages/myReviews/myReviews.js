@@ -24,7 +24,7 @@ Page({
             title: '电影数据加载中',
         })
         qcloud.request({
-            url: config.service.getUserDetail+"/guying1",
+            url: config.service.getUserDetail,
             success: result => {
                 wx.hideLoading()
                 if (!result.data.code) {

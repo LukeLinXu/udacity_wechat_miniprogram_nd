@@ -41,7 +41,7 @@ router.get('/comments/movie/:id', controllers.comment.listByMovieId)
 router.get('/comments/random', controllers.comment.random)
 
 
-router.get('/user/:id', validationMiddleware, controllers.users.detail)
+router.get('/users', validationMiddleware, controllers.users.detail)
 // router.update('/user', validationMiddleware, controllers.users.detail)
 // router.post('/user', validationMiddleware, controllers.users.detail)
 
