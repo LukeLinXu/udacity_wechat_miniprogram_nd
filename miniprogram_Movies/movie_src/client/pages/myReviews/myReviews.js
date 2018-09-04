@@ -19,12 +19,37 @@ Page({
 
   },
 
-    getMoviesList() {
+    getLikesList() {
         wx.showLoading({
             title: '电影数据加载中',
         })
         qcloud.request({
             url: config.service.getUserDetail,
+            success: result => {
+                wx.hideLoading()
+                if (!result.data.code) {
+                    console.log(result)
+                } else {
+                    wx.showToast({
+                        title: '电影数据加载失败',
+                    })
+                }
+            },
+            fail: result => {
+                wx.hideLoading()
+                wx.showToast({
+                    title: '电影数据加载失败',
+                })
+            }
+        })
+    },
+
+    getMyCommentsList() {
+        wx.showLoading({
+            title: '电影数据加载中',
+        })
+        qcloud.request({
+            url: config.service.getReviewListByUserId,
             success: result => {
                 wx.hideLoading()
                 if (!result.data.code) {
@@ -56,7 +81,8 @@ Page({
    */
   onShow: function () {
       if(app.getUserInfo()){
-          this.getMoviesList()
+          this.getLikesList()
+          this.getMyCommentsList()
       }else {
           wx.navigateTo({
               url: '/pages/login/login'
