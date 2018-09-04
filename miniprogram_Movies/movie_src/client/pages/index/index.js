@@ -51,6 +51,12 @@ Page({
     })
   },
 
+    onTapLogin: function(){
+        wx.navigateTo({
+            url: '/pages/myReviews/myReviews',
+        })
+    },
+
   onTapAvatar: function (event){
     let id = event.currentTarget.dataset.id
     wx.navigateTo({

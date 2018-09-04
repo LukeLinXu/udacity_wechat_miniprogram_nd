@@ -28,6 +28,7 @@ var config = {
         getReviewDetail: `${host}/weapp/comment/`,
         getMoviesList: `${host}/weapp/movie`,
         getMovieDetail: `${host}/weapp/movie/`,
+        getUserDetail: `${host}/weapp/user`,
     }
 };
 
