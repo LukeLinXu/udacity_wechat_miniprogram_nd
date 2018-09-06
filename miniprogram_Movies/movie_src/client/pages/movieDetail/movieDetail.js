@@ -1,6 +1,7 @@
 // pages/movieDetail/movieDetail.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 const config = require('../../config.js')
+const app = getApp()
 
 Page({
 
@@ -19,7 +20,6 @@ Page({
     this.setData({
       id: options.movie_id
     })
-    this.getMovieDetail()
   },
 
   getMovieDetail() {
@@ -30,6 +30,7 @@ Page({
       url: config.service.getMovieDetail+this.data.id,
       success: result => {
         wx.hideLoading()
+          console.log(result)
         if (!result.data.code) {
           this.setData({
             movie: result.data.data
@@ -86,7 +87,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+      if(app.getUserInfo()){
+          this.getMovieDetail()
+      }else {
+          wx.navigateTo({
+              url: '/pages/login/login'
+          })
+      }
   },
 
   /**

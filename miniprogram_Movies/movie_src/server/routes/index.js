@@ -33,7 +33,7 @@ router.get('/message', controllers.message.get)
 router.post('/message', controllers.message.post)
 
 router.get('/movie', controllers.movie.list)
-router.get('/movie/:id', controllers.movie.detail)
+router.get('/movie/:id', validationMiddleware, controllers.movie.detail)
 
 router.get('/comment/:id', controllers.comment.detail)
 router.get('/comments/user', validationMiddleware, controllers.comment.listByUserId)
