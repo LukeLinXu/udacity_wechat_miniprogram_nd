@@ -30,6 +30,7 @@ var config = {
         getMoviesList: `${host}/weapp/movie`,
         getMovieDetail: `${host}/weapp/movie/`,
         getUserDetail: `${host}/weapp/users`,
+        updateUserLikes: `${host}/weapp/user`,
     }
 };
 

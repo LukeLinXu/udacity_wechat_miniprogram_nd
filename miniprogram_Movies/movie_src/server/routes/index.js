@@ -43,6 +43,6 @@ router.get('/comments/random', controllers.comment.random)
 
 router.get('/users', validationMiddleware, controllers.users.detail)
 // router.update('/user', validationMiddleware, controllers.users.detail)
-// router.post('/user', validationMiddleware, controllers.users.detail)
+router.post('/user', validationMiddleware, controllers.users.updateLikes)
 
 module.exports = router

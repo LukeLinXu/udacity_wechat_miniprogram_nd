@@ -69,6 +69,44 @@ Page({
     })
   },
 
+    onClickLikeButton(e){
+      // this.ProcessLikeStatus(1, false)
+      // this.ProcessLikeStatus(1, true)
+      // this.ProcessLikeStatus(5, false)
+      this.ProcessLikeStatus(6, true)
+    },
+
+    ProcessLikeStatus(commentId, add){
+        wx.showLoading({
+            title: 'processing like status',
+        })
+        qcloud.request({
+            url: config.service.updateUserLikes,
+            data: {
+                commentId: commentId,
+                add: add
+            },
+            method: 'POST',
+            success: result => {
+                wx.hideLoading()
+                console.log(result)
+                if (!result.data.code) {
+
+                } else {
+                    wx.showToast({
+                        title: '失败',
+                    })
+                }
+            },
+            fail: result => {
+                wx.hideLoading()
+                wx.showToast({
+                    title: '失败',
+                })
+            }
+        })
+    },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
