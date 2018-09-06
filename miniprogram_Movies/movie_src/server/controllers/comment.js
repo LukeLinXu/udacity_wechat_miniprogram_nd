@@ -20,6 +20,8 @@ module.exports = {
         let temp = (await DB.query('SELECT * FROM comments WHERE comments.user_id = ? AND comments.movie_id = ?', [userId, comment.movie.id]))
         comment.movie.isReviewed = temp.length != 0
       comment.user = (await DB.query('select * from users where users.id = ?', [comment.user_id]))[0]
+        let tempUser = (await DB.query('select * from users where users.id = ?', [userId]))[0]
+        comment.isLiked = tempUser.likes.split(',').includes(commentId.toString())
     } else {
       comment = {}
     }
