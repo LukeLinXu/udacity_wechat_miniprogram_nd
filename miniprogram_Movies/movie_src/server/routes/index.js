@@ -35,7 +35,7 @@ router.post('/message', controllers.message.post)
 router.get('/movie', controllers.movie.list)
 router.get('/movie/:id', validationMiddleware, controllers.movie.detail)
 
-router.get('/comment/:id', controllers.comment.detail)
+router.get('/comment/:id', validationMiddleware, controllers.comment.detail)
 router.get('/comments/user', validationMiddleware, controllers.comment.listByUserId)
 router.get('/comments/movie/:id', controllers.comment.listByMovieId)
 router.get('/comments/random', controllers.comment.random)

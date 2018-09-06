@@ -30,6 +30,7 @@ Page({
           url: config.service.getReviewDetail+this.data.id,
           success: result => {
               wx.hideLoading()
+              console.log(result)
               if (!result.data.code) {
                   this.setData({
                       comment: result.data.data

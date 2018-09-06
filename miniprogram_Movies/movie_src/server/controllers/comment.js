@@ -10,12 +10,15 @@ module.exports = {
   },
 
   detail: async ctx => {
+      const userId = ctx.state.$wxInfo.userinfo.openId;
     let commentId = + ctx.params.id
     let comment
 
     if (!isNaN(commentId)) {
       comment = (await DB.query('select * from comments where comments.id = ?', [commentId]))[0]
       comment.movie = (await DB.query('select * from movies where movies.id = ?', [comment.movie_id]))[0]
+        let temp = (await DB.query('SELECT * FROM comments WHERE comments.user_id = ? AND comments.movie_id = ?', [userId, comment.movie.id]))
+        comment.movie.isReviewed = temp.length != 0
       comment.user = (await DB.query('select * from users where users.id = ?', [comment.user_id]))[0]
     } else {
       comment = {}
