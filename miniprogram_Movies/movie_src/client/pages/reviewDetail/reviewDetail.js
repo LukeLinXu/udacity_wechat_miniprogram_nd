@@ -12,6 +12,7 @@ Page({
       id: '',
       comment: null,
       isLiked: false,
+      reviewedId: -1,
   },
 
   /**
@@ -35,7 +36,8 @@ Page({
               if (!result.data.code) {
                   this.setData({
                       comment: result.data.data,
-                      isLiked: result.data.data.isLiked
+                      isLiked: result.data.data.isLiked,
+                      reviewedId: result.data.data.movie.reviewedId
                   })
               } else {
                   wx.showToast({
@@ -53,22 +55,29 @@ Page({
   },
 
   openCommentOptions(e){
-    let movie = JSON.stringify(this.data.comment.movie)
-    wx.showActionSheet({
-      itemList: ['文字', '音频'],
-      itemColor: '#007aff',
-      success(res) {
-        if (res.tapIndex === 0) {
-            wx.navigateTo({
-                url: '/pages/reviewEdit/reviewEdit?type_id=0&movie=' + movie + '&type_id=0'
-            })
-        } else if (res.tapIndex === 1) {
-            wx.navigateTo({
-                url: '/pages/reviewEdit/reviewEdit?type_id=1&movie=' + movie + '&type_id=1'
-            })
-        }
+      if(this.data.reviewedId == -1){
+          let movie = JSON.stringify(this.data.comment.movie)
+          wx.showActionSheet({
+              itemList: ['文字', '音频'],
+              itemColor: '#007aff',
+              success(res) {
+                  if (res.tapIndex === 0) {
+                      wx.navigateTo({
+                          url: '/pages/reviewEdit/reviewEdit?type_id=0&movie=' + movie + '&type_id=0'
+                      })
+                  } else if (res.tapIndex === 1) {
+                      wx.navigateTo({
+                          url: '/pages/reviewEdit/reviewEdit?type_id=1&movie=' + movie + '&type_id=1'
+                      })
+                  }
+              }
+          })
+      }else if(this.data.reviewedId != this.data.comment.id){
+          wx.navigateTo({
+              url: '/pages/reviewDetail/reviewDetail?comment_id=' + this.data.reviewedId,
+          })
       }
-    })
+
   },
 
     onClickLikeButton(e){

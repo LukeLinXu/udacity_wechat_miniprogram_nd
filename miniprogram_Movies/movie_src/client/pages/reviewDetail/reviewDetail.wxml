@@ -5,4 +5,4 @@
 <view>{{comment.user.name}}的影评</view>
 <view>{{comment.content}}</view>
 <view bindtap='onClickLikeButton'>{{isLiked? '取消收藏': '收藏影评'}}</view>
-<view bindtap='openCommentOptions'>写影评</view>
+<view bindtap='openCommentOptions'>{{(reviewedId == -1)? '添加影评': '查看我的影评'}}</view>
