@@ -12,7 +12,11 @@ module.exports = {
     if (!isNaN(movieId)) {
       movie = (await DB.query('select * from movies where movies.id = ?', [movieId]))[0]
         let temp = (await DB.query('SELECT * FROM comments WHERE comments.user_id = ? AND comments.movie_id = ?', [userId, movieId]))
-        movie.isReviewed = temp.length != 0
+        if(temp.length != 0){
+            movie.reviewedId = temp[0].id
+        }else {
+            movie.reviewedId = -1
+        }
     } else {
       movie = {}
     }
