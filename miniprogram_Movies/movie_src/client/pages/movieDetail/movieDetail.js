@@ -11,6 +11,7 @@ Page({
   data: {
     id: '',
     movie: null,
+    reviewedId: -1,
   },
 
   /**
@@ -33,7 +34,8 @@ Page({
           console.log(result)
         if (!result.data.code) {
           this.setData({
-            movie: result.data.data
+            movie: result.data.data,
+              reviewedId: result.data.data.reviewedId
           })
         } else {
           wx.showToast({
@@ -58,22 +60,29 @@ Page({
   },
 
     openCommentOptions(e){
-        let movie = JSON.stringify(this.data.movie)
-        wx.showActionSheet({
-            itemList: ['文字', '音频'],
-            itemColor: '#007aff',
-            success(res) {
-                if (res.tapIndex === 0) {
-                    wx.navigateTo({
-                        url: '/pages/reviewEdit/reviewEdit?type_id=0&movie=' + movie + '&type_id=0'
-                    })
-                } else if (res.tapIndex === 1) {
-                    wx.navigateTo({
-                        url: '/pages/reviewEdit/reviewEdit?type_id=1&movie=' + movie + '&type_id=1'
-                    })
-                }
-            }
-        })
+      if(this.data.reviewedId == -1){
+          let movie = JSON.stringify(this.data.movie)
+          wx.showActionSheet({
+              itemList: ['文字', '音频'],
+              itemColor: '#007aff',
+              success(res) {
+                  if (res.tapIndex === 0) {
+                      wx.navigateTo({
+                          url: '/pages/reviewEdit/reviewEdit?type_id=0&movie=' + movie + '&type_id=0'
+                      })
+                  } else if (res.tapIndex === 1) {
+                      wx.navigateTo({
+                          url: '/pages/reviewEdit/reviewEdit?type_id=1&movie=' + movie + '&type_id=1'
+                      })
+                  }
+              }
+          })
+      }else{
+          wx.navigateTo({
+              url: '/pages/reviewDetail/reviewDetail?comment_id=' + this.data.reviewedId,
+          })
+      }
+
     },
 
   /**
