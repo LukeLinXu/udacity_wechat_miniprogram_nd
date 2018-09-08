@@ -11,6 +11,7 @@ Page({
   data: {
       id: '',
       comment: null,
+      isLiked: false,
   },
 
   /**
@@ -33,7 +34,8 @@ Page({
               console.log(result)
               if (!result.data.code) {
                   this.setData({
-                      comment: result.data.data
+                      comment: result.data.data,
+                      isLiked: result.data.data.isLiked
                   })
               } else {
                   wx.showToast({
@@ -70,10 +72,7 @@ Page({
   },
 
     onClickLikeButton(e){
-      // this.ProcessLikeStatus(1, false)
-      // this.ProcessLikeStatus(1, true)
-      // this.ProcessLikeStatus(5, false)
-      this.ProcessLikeStatus(6, true)
+      this.ProcessLikeStatus(this.data.id, !this.data.isLiked)
     },
 
     ProcessLikeStatus(commentId, add){
@@ -91,7 +90,9 @@ Page({
                 wx.hideLoading()
                 console.log(result)
                 if (!result.data.code) {
-
+                    this.setData({
+                        isLiked: add
+                    })
                 } else {
                     wx.showToast({
                         title: '失败',
