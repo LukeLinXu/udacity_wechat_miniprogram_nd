@@ -31,3 +31,8 @@
   border-radius: 100rpx;
   background-color: #f10b2e;
 }
+
+.audio_icon {
+  width: 40rpx;
+  height: 40rpx;
+}
