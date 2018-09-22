@@ -22,7 +22,7 @@ Page({
       this.getReviewListByMovieId()
   },
 
-  getReviewListByMovieId() {
+  getReviewListByMovieId(callback) {
       wx.showLoading({
           title: '评论数据加载中',
       })
@@ -45,6 +45,9 @@ Page({
               wx.showToast({
                   title: '评论数据加载失败',
               })
+          },
+          complete: () => {
+              callback && callback()
           }
       })
   },
@@ -88,7 +91,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+      this.getReviewListByMovieId(() => {
+          wx.stopPullDownRefresh();
+      })
   },
 
   /**

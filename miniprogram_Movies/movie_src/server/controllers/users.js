@@ -18,6 +18,8 @@ module.exports = {
                     let comment = likesDetail[i]
                     comment.movie = (await DB.query('select * from movies where movies.id = ?', [comment.movie_id]))[0];
                     comment.user = (await DB.query('select * from users where users.id = ?', [comment.user_id]))[0];
+                    comment.name = comment.user.name
+                    comment.avatar = comment.user.avatar
                 }
                 user.likesDetail = likesDetail
             }

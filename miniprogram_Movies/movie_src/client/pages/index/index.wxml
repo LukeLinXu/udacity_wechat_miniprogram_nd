@@ -5,5 +5,5 @@
   <image class='profile' src='{{comment.user.avatar}}'></image>
   <view>{{comment.user.name}}给你推荐了一部电影</view>
 </view>
-<view bindtap='onTapMovieList'>热门</view>
-<view bindtap='onTapLogin'>我的</view>
+<button bindtap='onTapMovieList'>热门</button>
+<button bindtap='onTapLogin'>我的</button>

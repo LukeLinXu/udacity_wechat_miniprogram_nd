@@ -1,2 +1,2 @@
 <!--pages/login/login.wxml-->
-<button open-type="getUserInfo" bindgetuserinfo="userInfoHandler"> Click me </button>
+<button open-type="getUserInfo" bindgetuserinfo="userInfoHandler" bindtap='onClick'>点击登录</button>

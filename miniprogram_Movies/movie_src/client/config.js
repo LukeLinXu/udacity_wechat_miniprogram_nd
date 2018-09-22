@@ -27,6 +27,7 @@ var config = {
         getReviewListByMovieId: `${host}/weapp/comments/movie/`,
         getReviewListByUserId: `${host}/weapp/comments/user`,
         getReviewDetail: `${host}/weapp/comment/`,
+        addReview: `${host}/weapp/comment`,
         getMoviesList: `${host}/weapp/movie`,
         getMovieDetail: `${host}/weapp/movie/`,
         getUserDetail: `${host}/weapp/users`,

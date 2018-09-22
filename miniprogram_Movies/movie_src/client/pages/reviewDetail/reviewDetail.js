@@ -2,6 +2,9 @@
 const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 const config = require('../../config.js')
 const app = getApp()
+const NOTPLAYING = 0
+const PLAYING = 1
+const innerAudioContext = wx.createInnerAudioContext()
 
 Page({
 
@@ -9,10 +12,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+      audioStatusText:['播放', '停止'],
       id: '',
       comment: null,
       isLiked: false,
       reviewedId: -1,
+      type: 0,
+      audioStatus: NOTPLAYING,
   },
 
   /**
@@ -37,8 +43,14 @@ Page({
                   this.setData({
                       comment: result.data.data,
                       isLiked: result.data.data.isLiked,
-                      reviewedId: result.data.data.movie.reviewedId
+                      reviewedId: result.data.data.movie.reviewedId,
+                      type: (result.data.data.duration == null || result.data.data.duration == 0)? 0: 1
                   })
+                  console.log(this.data.type)
+                  if(this.data.type == 1){
+                      innerAudioContext.src = this.data.comment.content
+                      this.setAudioOptions()
+                  }
               } else {
                   wx.showToast({
                       title: '评论数据加载失败',
@@ -117,7 +129,42 @@ Page({
         })
     },
 
-  /**
+    onTapAudio() {
+        if (this.data.audioStatus === NOTPLAYING) {
+            innerAudioContext.play()
+        } else if (this.data.audioStatus === PLAYING) {
+            innerAudioContext.pause()
+        }
+    },
+
+    setAudioOptions() {
+        innerAudioContext.onPlay(() => {
+            this.setData({
+                audioStatus: PLAYING
+            })
+        })
+        innerAudioContext.onPause(() => {
+            this.setData({
+                audioStatus: NOTPLAYING
+            })
+        })
+        innerAudioContext.onStop(() => {
+            this.setData({
+                audioStatus: NOTPLAYING
+            })
+        })
+        innerAudioContext.onEnded(() => {
+            this.setData({
+                audioStatus: NOTPLAYING
+            })
+        })
+        innerAudioContext.onError(error => {
+            console.log(error)
+        })
+    },
+
+
+    /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {

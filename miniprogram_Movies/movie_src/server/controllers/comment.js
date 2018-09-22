@@ -38,6 +38,10 @@ module.exports = {
 
     if (userId) {
       comment = (await DB.query('SELECT * FROM movies INNER JOIN comments ON comments.user_id = ? AND comments.movie_id=movies.id', [userId]))
+        for(i  = 0; i < comment.length; i++){
+          comment[i].name = ctx.state.$wxInfo.userinfo.nickName
+          comment[i].avatar = ctx.state.$wxInfo.userinfo.avatarUrl
+        }
     } else {
       comment = {}
     }
@@ -54,5 +58,15 @@ module.exports = {
       comment = {}
     }
     ctx.state.data = comment
-  }
+  },
+
+    add: async ctx => {
+        const userId = ctx.state.$wxInfo.userinfo.openId;
+        const { content, duration, movie_id} = ctx.request.body;
+
+        if (!isNaN(movie_id)) {
+            await DB.query('INSERT INTO comments(user_id, content, duration, movie_id) VALUES (?, ?, ?, ?)', [userId, content, duration, movie_id])
+        }
+        ctx.state.data = {}
+    }
 } 

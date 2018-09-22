@@ -9,7 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+      reviewsList: [],
+      myReviewsList: [],
+      LikeReviewsList: [],
   },
 
   /**
@@ -19,7 +21,7 @@ Page({
 
   },
 
-    getLikesList() {
+    getLikesList(callback) {
         wx.showLoading({
             title: '电影数据加载中',
         })
@@ -28,6 +30,9 @@ Page({
             success: result => {
                 wx.hideLoading()
                 if (!result.data.code) {
+                    this.setData({
+                        LikeReviewsList: result.data.data.likesDetail
+                    })
                     console.log(result)
                 } else {
                     wx.showToast({
@@ -40,11 +45,14 @@ Page({
                 wx.showToast({
                     title: '电影数据加载失败',
                 })
+            },
+            complete: () => {
+                callback && callback()
             }
         })
     },
 
-    getMyCommentsList() {
+    getMyCommentsList(callback) {
         wx.showLoading({
             title: '电影数据加载中',
         })
@@ -54,6 +62,10 @@ Page({
                 wx.hideLoading()
                 if (!result.data.code) {
                     console.log(result)
+                    this.setData({
+                        myReviewsList: result.data.data,
+                        reviewsList: result.data.data
+                    })
                 } else {
                     wx.showToast({
                         title: '电影数据加载失败',
@@ -65,7 +77,28 @@ Page({
                 wx.showToast({
                     title: '电影数据加载失败',
                 })
+            },
+            complete: () => {
+                callback && callback()
             }
+        })
+    },
+
+    onBackClick(){
+        wx.navigateBack({
+            delta: 1
+        })
+    },
+
+    onMyReviewClick(){
+        this.setData({
+            reviewsList: this.data.myReviewsList
+        })
+    },
+
+    onMyLikeClick(){
+        this.setData({
+            reviewsList: this.data.LikeReviewsList
         })
     },
 
@@ -108,7 +141,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+      this.getLikesList()
+      this.getMyCommentsList(() => {
+          wx.stopPullDownRefresh();
+      })
   },
 
   /**
