@@ -1,7 +1,7 @@
 <!--pages/myReviews/myReviews.wxml-->
 <button bindtap='onBackClick'>回到首页</button>
-<button bindtap='onMyReviewClick'>我的评论列表</button>
-<button bindtap='onMyLikeClick'>我收藏的评论</button>
+<button bindtap='onMyReviewClick'>已发布的</button>
+<button bindtap='onMyLikeClick'>已收藏的</button>
 <scroll-view scroll-x>
   <view class='reviews-list'>
     <view wx:for="{{reviewsList}}" data-id="{{item.id}}" bindtap='onTapReview'>
