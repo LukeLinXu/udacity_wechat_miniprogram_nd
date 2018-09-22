@@ -9,12 +9,19 @@ Page({
   
   },
 
+    onClick(){
+        wx.showLoading({
+            title: '正在登录'
+        })
+    },
+
     userInfoHandler: function(event){
         let userInfo = event.detail.userInfo
         console.log(userInfo)
         if(userInfo){
             app.login({
                 success: ({ userInfot }) => {
+                    wx.hideLoading();
                     app.setUserInfo(userInfo)
                     wx.navigateBack({
                         delta: 1
