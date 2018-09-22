@@ -1,4 +1,4 @@
-<scroll-view scroll-x>
+<scroll-view >
   <view class='movies-list'>
     <view class="movies-item" wx:for="{{moviesList}}" data-id="{{item.id}}" bindtap='onTapMovie'>
       <image class='movies-item-image' src='{{item.image}}' data-index='{{index}}' binderror='onImageLoadFail'></image> 
