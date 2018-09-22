@@ -29,6 +29,9 @@ Page({
           type: dataObj.type,
           comment: dataObj.comment,
       })
+      if(dataObj.type == 1){
+          innerAudioContext.src = dataObj.comment.content
+      }
   },
 
   /**
