@@ -54,5 +54,15 @@ module.exports = {
       comment = {}
     }
     ctx.state.data = comment
-  }
+  },
+
+    add: async ctx => {
+        const userId = ctx.state.$wxInfo.userinfo.openId;
+        const { content, duration, movie_id} = ctx.request.body;
+
+        if (!isNaN(movie_id)) {
+            await DB.query('INSERT INTO comments(user_id, content, duration, movie_id) VALUES (?, ?, ?, ?)', [userId, content, duration, movie_id])
+        }
+        ctx.state.data = {}
+    }
 } 

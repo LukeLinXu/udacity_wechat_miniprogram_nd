@@ -39,6 +39,7 @@ router.get('/comment/:id', validationMiddleware, controllers.comment.detail)
 router.get('/comments/user', validationMiddleware, controllers.comment.listByUserId)
 router.get('/comments/movie/:id', controllers.comment.listByMovieId)
 router.get('/comments/random', controllers.comment.random)
+router.post('/comment', validationMiddleware, controllers.comment.add)
 
 
 router.get('/users', validationMiddleware, controllers.users.detail)
