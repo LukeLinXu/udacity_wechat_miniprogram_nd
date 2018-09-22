@@ -38,6 +38,10 @@ module.exports = {
 
     if (userId) {
       comment = (await DB.query('SELECT * FROM movies INNER JOIN comments ON comments.user_id = ? AND comments.movie_id=movies.id', [userId]))
+        for(i  = 0; i < comment.length; i++){
+          comment[i].name = ctx.state.$wxInfo.userinfo.nickName
+          comment[i].avatar = ctx.state.$wxInfo.userinfo.avatarUrl
+        }
     } else {
       comment = {}
     }
