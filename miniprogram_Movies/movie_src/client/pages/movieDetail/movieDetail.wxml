@@ -4,5 +4,5 @@
 <view>{{movie.description}}</view>
 
 
-<view data-id='{{movie.id}}' bindtap='onTapMovieComments'>查看所有影评</view>
-<view bindtap='openCommentOptions'>{{(reviewedId == -1)? '添加影评': '查看我的影评'}}</view>
+<button data-id='{{movie.id}}' bindtap='onTapMovieComments'>查看所有影评</button>
+<button bindtap='openCommentOptions'>{{(reviewedId == -1)? '添加影评': '查看我的影评'}}</button>
