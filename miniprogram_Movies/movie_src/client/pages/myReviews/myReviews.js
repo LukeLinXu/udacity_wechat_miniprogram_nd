@@ -9,7 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+      reviewsList: [],
+      myReviewsList: [],
+      LikeReviewsList: [],
   },
 
   /**
@@ -28,6 +30,9 @@ Page({
             success: result => {
                 wx.hideLoading()
                 if (!result.data.code) {
+                    this.setData({
+                        LikeReviewsList: result.data.data.likesDetail
+                    })
                     console.log(result)
                 } else {
                     wx.showToast({
@@ -54,6 +59,9 @@ Page({
                 wx.hideLoading()
                 if (!result.data.code) {
                     console.log(result)
+                    this.setData({
+                        myReviewsList: result.data.data
+                    })
                 } else {
                     wx.showToast({
                         title: '电影数据加载失败',
@@ -66,6 +74,24 @@ Page({
                     title: '电影数据加载失败',
                 })
             }
+        })
+    },
+
+    onBackClick(){
+        wx.navigateBack({
+            delta: 1
+        })
+    },
+
+    onMyReviewClick(){
+        this.setData({
+            reviewsList: this.data.myReviewsList
+        })
+    },
+
+    onMyLikeClick(){
+        this.setData({
+            reviewsList: this.data.LikeReviewsList
         })
     },
 

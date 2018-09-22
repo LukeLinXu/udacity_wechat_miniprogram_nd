@@ -1,1 +1,38 @@
 /* pages/myReviews/myReviews.wxss */
+
+.reviews-list {
+
+}
+
+.reviews-item {
+  display:flex;
+}
+
+.reviews-item-text {
+  width: 490rpx;
+  padding-right: 20rpx
+}
+
+.reviews-item-title {
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+
+.reviews-item-category {
+  font-size: 25rpx;
+  line-height: 35rpx;
+  opacity: 0.5;
+}
+
+.reviews-item-image {
+  width: 50rpx;
+  height: 50rpx;
+  border: 0 solid #ff0000;
+  border-radius: 100rpx;
+  background-color: #f10b2e;
+}
+
+.audio_icon {
+  width: 40rpx;
+  height: 40rpx;
+}
