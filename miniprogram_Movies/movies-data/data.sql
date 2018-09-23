@@ -52,7 +52,7 @@ ALTER TABLE `comments`
 
 CREATE TABLE `users` (
   `id` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,  
+  `name` varchar(255) COLLATE utf8_general_ci DEFAULT NULL,  
   `avatar` varchar(255) NOT NULL,  
   `likes` varchar(1023) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
