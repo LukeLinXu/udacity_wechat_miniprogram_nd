@@ -1,0 +1,19 @@
+<!--pages/reviewEdit/reviewEdit.wxml-->
+<image class='movie-image' src='{{movie.image}}'></image>
+<view>{{movie.title}}</view>
+
+<view wx:if="{{type == 0}}">
+  <input  bindinput="bindKeyInput" placeholder="输入同步到view中"/>
+</view>
+
+
+<view wx:if="{{type == 1}}">
+       <button wx:if="{{(recordAuthStatus === 0 || recordAuthStatus === 2)}}" bindtouchstart='startRecord' bindtouchend='stopRecord'>
+          {{recordStatusText[recordStatus]}}
+        </button>
+                <button wx:if="{{recordAuthStatus === 1}}" open-type="openSetting" bindopensetting="settingCallBack" >
+                  点击授权录音
+                </button>
+            </view>
+
+<button bindtap='onSubmitClick'>完成</button>

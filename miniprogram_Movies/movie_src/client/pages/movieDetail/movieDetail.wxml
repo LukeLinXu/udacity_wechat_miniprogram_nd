@@ -1,0 +1,8 @@
+<!--pages/movieDetail/movieDetail.wxml-->
+<image class='movie-image' src='{{movie.image}}'></image>
+<view>{{movie.title}}</view>
+<view>{{movie.description}}</view>
+
+
+<button data-id='{{movie.id}}' bindtap='onTapMovieComments'>查看所有影评</button>
+<button bindtap='openCommentOptions'>{{(reviewedId == -1)? '添加影评': '查看我的影评'}}</button>

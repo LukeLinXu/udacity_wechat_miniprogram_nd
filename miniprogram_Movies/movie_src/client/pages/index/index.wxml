@@ -1,0 +1,9 @@
+<!--pages/index/index.wxml-->
+<image class='movie-image' src='{{comment.movie.image}}' data-id="{{comment.movie.id}}" bindtap='onTapMovie'></image>
+<view>{{comment.movie.title}}</view>
+<view data-id="{{comment.id}}" bindtap='onTapAvatar'>
+  <image class='profile' src='{{comment.user.avatar}}'></image>
+  <view>{{comment.user.name}}给你推荐了一部电影</view>
+</view>
+<button bindtap='onTapMovieList'>热门</button>
+<button bindtap='onTapLogin'>我的</button>

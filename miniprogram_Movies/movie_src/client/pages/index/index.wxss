@@ -1,0 +1,15 @@
+/* pages/index/index.wxss */
+.movie-image {
+  display: block;
+  margin: 0 auto;
+  width: 540rpx;
+  height: 800rpx;
+}
+
+.profile{
+  width: 50rpx;
+  height: 50rpx;
+  border: 0 solid #ff0000;
+  border-radius: 100rpx;
+  background-color: #f10b2e;
+}

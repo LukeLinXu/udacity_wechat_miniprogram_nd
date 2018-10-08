@@ -1,0 +1,10 @@
+<!--pages/reviewPreview/reviewPreview.wxml-->
+<image class='movie-image' src='{{movie.image}}'></image>
+<view>{{movie.title}}</view>
+<image class='profile' src='{{user.avatar}}'></image>
+<view>{{user.name}}的影评</view>
+<view wx:if="{{type == 0}}">{{comment.content}}</view>
+<view wx:if="{{type == 1}}" bindtap='onTapAudio'>{{audioStatusText[audioStatus]}}</view>
+<button bindtap='onCancelClick'>重新编辑</button>
+<button bindtap='onPublishClick'>发布影评</button>
+

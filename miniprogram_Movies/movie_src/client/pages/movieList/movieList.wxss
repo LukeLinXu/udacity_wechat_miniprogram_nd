@@ -1,0 +1,34 @@
+/* pages/movieList/movieList.wxss */
+.movies-list {
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+}
+
+.movies-item {
+  display:flex;
+}
+
+.movies-item-text {
+  width: 490rpx;
+  padding-right: 20rpx
+}
+
+.movies-item-title {
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+
+.movies-item-category {
+  font-size: 25rpx;
+  line-height: 35rpx;
+  opacity: 0.5;
+}
+
+.movies-item-image {
+  width: 216rpx;
+  height: 320rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}

@@ -1,0 +1,16 @@
+<!--pages/reviewList/reviewList.wxml-->
+<scroll-view scroll-x>
+  <view class='reviews-list'>
+    <view wx:for="{{reviewsList}}" data-id="{{item.id}}" bindtap='onTapReview'>
+      <view class="reviews-item">
+        <image class='reviews-item-image' src='{{item.avatar}}' data-index='{{index}}' binderror='onImageLoadFail'></image>
+        <view class='reviews-item-title'>{{item.name}}</view>
+      </view>
+      <view wx:if="{{item.duration == 0}}" class='reviews-item-category'>{{item.content}}</view>
+      <view wx:if="{{item.duration != 0}}" class='reviews-item'>
+      <image class='audio_icon' src='/images/baseline_play_circle_outline_black_18dp.png'></image>
+        <view class='reviews-item-category'>{{item.duration/1000}} seconds</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

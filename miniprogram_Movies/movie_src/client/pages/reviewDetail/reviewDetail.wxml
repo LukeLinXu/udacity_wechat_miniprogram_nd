@@ -1,0 +1,9 @@
+<!--pages/reviewDetail/reviewDetail.wxml-->
+<image class='movie-image' src='{{comment.movie.image}}'></image>
+<view>{{comment.movie.title}}</view>
+<image class='profile' src='{{comment.user.avatar}}' data-id="{{comment.id}}" bindtap='onTapAvatar'></image>
+<view>{{comment.user.name}}的影评</view>
+<view wx:if="{{type == 0}}">{{comment.content}}</view>
+<button wx:if="{{type == 1}}" bindtap='onTapAudio'>{{audioStatusText[audioStatus]}}</button>
+<button bindtap='onClickLikeButton'>{{isLiked? '取消收藏': '收藏影评'}}</button>
+<button bindtap='openCommentOptions'>{{(reviewedId == -1)? '添加影评': '查看我的影评'}}</button>
